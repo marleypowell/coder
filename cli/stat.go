@@ -131,9 +131,10 @@ func cpuUsageFromCgroup(interval time.Duration) (float64, error) {
 func (sc *statCmd) cpu() *clibase.Cmd {
 	var interval time.Duration
 	c := &clibase.Cmd{
-		Use:   "cpu",
-		Short: "Display the system's cpu usage",
-		Long:  "If inside a cgroup (e.g. docker container), the cpu usage is ",
+		Use:     "cpu-usage",
+		Aliases: []string{"cu"},
+		Short:   "Display the system's cpu usage",
+		Long:    "If inside a cgroup (e.g. docker container), the cpu usage is ",
 		Handler: func(inv *clibase.Invocation) error {
 			if sc.watch != 0 {
 				interval = sc.watch
